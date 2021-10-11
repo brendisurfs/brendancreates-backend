@@ -5,11 +5,12 @@ import (
 	"log"
 )
 
+// FormSubmit - struct for the form coming from the frontend
 type FormSubmit struct {
-	Name    string
-	Email   string
-	Subject string
-	Message string
+	Name    string `json:"name"`
+	Email   string `json:"email"`
+	Subject string `json:"subject"`
+	Message string `json:"message"`
 }
 
 // MessageParser - parses the received message from []bye to JSON.
