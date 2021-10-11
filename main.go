@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 
+	"github.com/brendisurfs/brendancreates-backend/parser"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 )
@@ -10,8 +11,12 @@ import (
 func submitResponse(c *fiber.Ctx) error {
 	fmt.Println("post form data")
 	data := c.Body()
-	fmt.Println(string(data))
-	return c.SendString("post form data")
+
+	// convert to json
+	formMsg := parser.MessageParser(data)
+	fmt.Println(formMsg.Email)
+
+	return c.SendString("form submitted")
 }
 
 func routesSetup(app *fiber.App) {
