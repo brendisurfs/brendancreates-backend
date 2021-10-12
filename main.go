@@ -7,7 +7,6 @@ import (
 	"github.com/brendisurfs/brendancreates-backend/email"
 	"github.com/brendisurfs/brendancreates-backend/parser"
 	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/joho/godotenv"
 )
 
@@ -60,7 +59,11 @@ func main() {
 	app := fiber.New()
 
 	// middleware
-	app.Use(cors.New())
+
+	//NOTE -> dev: use cors for localhost, not prod.
+	//	|
+	//	v
+	// app.Use(cors.New())
 
 	routesSetup(app)
 
